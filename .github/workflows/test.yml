@@ -24,6 +24,6 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Run tests
-        run: mvn test
+        run: mvn test -Dheadless=true
 
 

@@ -13,13 +13,17 @@ public class ConfigReader {
             FileInputStream fis = new FileInputStream("src/test/resources/config.properties");
             properties = new Properties();
             properties.load(fis);
-        }catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Fail to load config.properties file");
         }
-    }
 
-    public static String getProperty(String key) {
-        return properties.getProperty(key);
     }
+        public static String getProperty(String key) {
+            String systemValue = System.getProperty(key);
+            if(systemValue != null) {
+                return systemValue;
+            }
+            return properties.getProperty(key);
+        }
 }
 
